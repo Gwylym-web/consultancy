@@ -2287,7 +2287,13 @@
             <div class="contact-grid">
                 <div class="contact-form-wrapper">
                     <h3>Get Started Today</h3>
-                    <form>
+                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <!-- Hidden field for bot protection -->
+                        <input type="hidden" name="form-name" value="contact">
+                        <p style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+                        
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
@@ -2492,8 +2498,8 @@
 
         // Form submission handler
         document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your interest! In a real implementation, this would send your consultation request.');
+            // Let Netlify handle the submission naturally
+            // The form will redirect to a success page automatically
         });
     </script>
 </body>
